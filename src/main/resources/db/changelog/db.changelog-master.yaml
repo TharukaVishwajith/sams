@@ -1,0 +1,7 @@
+databaseChangeLog:
+
+    - include:
+        file: /db/changelog/scripts.sql
+
+    - include:
+        file: /db/changelog/master_data.sql
