@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StaffController {
 
-    @RequestMapping("/api/auth/hi")
-    public String hello(){
-        return "Hi";
-    }
+//    @RequestMapping("/api/hi")
+//    public String hello(){
+//        return "Hi";
+//    }
 
 }

@@ -34,26 +34,3 @@ CREATE TABLE `user_roles` (
 COLLATE='latin1_swedish_ci'
 ENGINE=MyISAM
 ;
-
-CREATE TABLE `product` (
-	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-	`no_of_units_per_carton` INT(11) NOT NULL,
-	`name` VARCHAR(255) NOT NULL,
-	`carton_cost` FLOAT NOT NULL,
-	PRIMARY KEY (`id`)
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=MyISAM
-AUTO_INCREMENT=12
-;
-
-CREATE TABLE `discount` (
-	`id` BIGINT(20) NOT NULL,
-	`discount_amount` DOUBLE NOT NULL,
-	`min_purchases` INT(11) NOT NULL,
-	`purchase_type` VARCHAR(255) NULL DEFAULT NULL,
-	PRIMARY KEY (`id`)
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=MyISAM
-;

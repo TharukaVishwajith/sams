@@ -10,6 +10,8 @@ public class Location extends BaseEntity{
 
     private String faculty;
 
+    private String name;
+
     private double lat;
 
     private double lon;
@@ -51,6 +53,14 @@ public class Location extends BaseEntity{
 
     public void setLocationCode(String locationCode) {
         this.locationCode = locationCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<QRClient> getQrClients() {
