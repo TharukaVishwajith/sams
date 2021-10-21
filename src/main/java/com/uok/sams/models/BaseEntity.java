@@ -18,6 +18,9 @@ public class BaseEntity {
     @Column(name = "updated_date")
     protected Date updatedDate;
 
+    @Column(name = "is_deleted", columnDefinition = "boolean default false")
+    protected Boolean isDeleted;
+
     public Long getId() {
         return id;
     }
@@ -40,5 +43,13 @@ public class BaseEntity {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 }

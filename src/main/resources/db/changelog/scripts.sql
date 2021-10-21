@@ -16,8 +16,9 @@ CREATE TABLE `student`
 (
     `id`                      BIGINT(19)   NOT NULL AUTO_INCREMENT,
     `created_date`            DATETIME(6)  NULL DEFAULT NULL,
-    `updated_date`       DATETIME(6)  NULL DEFAULT NULL,
-    `address`                 VARCHAR(500)      NULL DEFAULT NULL,
+    `updated_date`            DATETIME(6)  NULL DEFAULT NULL,
+    `is_deleted`              TINYINT(1)   NULL DEFAULT '0',
+    `address`                 VARCHAR(500) NULL DEFAULT NULL,
     `district`                INT(10)      NULL DEFAULT NULL,
     `dob`                     DATE         NULL DEFAULT NULL,
     `home_contact_number`     INT(10)      NULL DEFAULT NULL,
@@ -43,7 +44,8 @@ CREATE TABLE `staff`
 (
     `id`                      BIGINT(19)   NOT NULL AUTO_INCREMENT,
     `created_date`            DATETIME(6)  NULL DEFAULT NULL,
-    `updated_date`       DATETIME(6)  NULL DEFAULT NULL,
+    `updated_date`            DATETIME(6)  NULL DEFAULT NULL,
+    `is_deleted`              TINYINT(1)   NULL DEFAULT '0',
     `dob`                     DATE         NULL DEFAULT NULL,
     `home_contact_number`     INT(10)      NULL DEFAULT NULL,
     `image_data`              LONGBLOB     NULL DEFAULT NULL,
@@ -63,13 +65,14 @@ CREATE TABLE `staff`
 
 CREATE TABLE `user`
 (
-    `id`                BIGINT(19)   NOT NULL AUTO_INCREMENT,
-    `created_date`      DATETIME(6)  NULL DEFAULT NULL,
+    `id`           BIGINT(19)   NOT NULL AUTO_INCREMENT,
+    `created_date` DATETIME(6)  NULL DEFAULT NULL,
     `updated_date` DATETIME(6)  NULL DEFAULT NULL,
-    `email`             VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-    `password`          VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-    `username`          VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-    `staff_id`          BIGINT(19)   NULL DEFAULT NULL,
+    `is_deleted`   TINYINT(1)   NULL DEFAULT '0',
+    `email`        VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `password`     VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `username`     VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `staff_id`     BIGINT(19)   NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE,
     UNIQUE INDEX `UKsb8bbouer5wak8vyiiy4pf2bx` (`username`) USING BTREE,
     UNIQUE INDEX `UKob8kqyqqgmefl0aco34akdtpe` (`email`) USING BTREE,
@@ -94,14 +97,15 @@ CREATE TABLE `user_roles`
 
 CREATE TABLE `location`
 (
-    `id`                BIGINT(19)   NOT NULL AUTO_INCREMENT,
-    `created_date`      DATETIME(6)  NULL DEFAULT NULL,
-    `updated_date` DATETIME(6)  NULL DEFAULT NULL,
-    `faculty`           VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-    `lat`               DOUBLE       NOT NULL,
-    `location_code`     VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-    `lon`               DOUBLE       NOT NULL,
-    `name`              VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `id`            BIGINT(19)   NOT NULL AUTO_INCREMENT,
+    `created_date`  DATETIME(6)  NULL DEFAULT NULL,
+    `updated_date`  DATETIME(6)  NULL DEFAULT NULL,
+    `is_deleted`    TINYINT(1)   NULL DEFAULT '0',
+    `faculty`       VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `lat`           DOUBLE       NOT NULL,
+    `location_code` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `lon`           DOUBLE       NOT NULL,
+    `name`          VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
     PRIMARY KEY (`id`) USING BTREE
 )
     COLLATE = 'utf8mb4_0900_ai_ci'
@@ -110,12 +114,13 @@ CREATE TABLE `location`
 
 CREATE TABLE `qr_client`
 (
-    `id`                BIGINT(19)   NOT NULL AUTO_INCREMENT,
-    `created_date`      DATETIME(6)  NULL DEFAULT NULL,
+    `id`           BIGINT(19)   NOT NULL AUTO_INCREMENT,
+    `created_date` DATETIME(6)  NULL DEFAULT NULL,
     `updated_date` DATETIME(6)  NULL DEFAULT NULL,
-    `name`              VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-    `location_id`       BIGINT(19)   NULL DEFAULT NULL,
-    `staff_id`          BIGINT(19)   NULL DEFAULT NULL,
+    `is_deleted`   TINYINT(1)   NULL DEFAULT '0',
+    `name`         VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+    `location_id`  BIGINT(19)   NULL DEFAULT NULL,
+    `staff_id`     BIGINT(19)   NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE,
     INDEX `FKlucjn44sukh7jptf1lpsw9ovt` (`location_id`) USING BTREE,
     INDEX `FKe2dm1udeu3mbgml6cv5v4r567` (`staff_id`) USING BTREE,
@@ -128,14 +133,15 @@ CREATE TABLE `qr_client`
 
 CREATE TABLE `attendance`
 (
-    `id`                BIGINT(19)  NOT NULL AUTO_INCREMENT,
-    `created_date`      DATETIME(6) NULL DEFAULT NULL,
+    `id`           BIGINT(19)  NOT NULL AUTO_INCREMENT,
+    `created_date` DATETIME(6) NULL DEFAULT NULL,
     `updated_date` DATETIME(6) NULL DEFAULT NULL,
-    `time_stamp`        DATETIME(6) NULL DEFAULT NULL,
-    `location_id`       BIGINT(19)  NULL DEFAULT NULL,
-    `qr_client_id`      BIGINT(19)  NULL DEFAULT NULL,
-    `recorded_by`           BIGINT(19)  NULL DEFAULT NULL,
-    `student_id`        BIGINT(19)  NULL DEFAULT NULL,
+    `is_deleted`   TINYINT(1)  NULL DEFAULT '0',
+    `time_stamp`   DATETIME(6) NULL DEFAULT NULL,
+    `location_id`  BIGINT(19)  NULL DEFAULT NULL,
+    `qr_client_id` BIGINT(19)  NULL DEFAULT NULL,
+    `recorded_by`  BIGINT(19)  NULL DEFAULT NULL,
+    `student_id`   BIGINT(19)  NULL DEFAULT NULL,
     PRIMARY KEY (`id`) USING BTREE,
     INDEX `FK9tg02nxjffw4byk5k1v7ynd5g` (`location_id`) USING BTREE,
     INDEX `FKepfktenvpsbu2q9x3sphhu654` (`qr_client_id`) USING BTREE,
