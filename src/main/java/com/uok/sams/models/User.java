@@ -5,10 +5,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(	name = "users",
+@Table(	name = "user",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
@@ -40,6 +41,9 @@ public class User extends BaseEntity{
     @OneToOne(cascade =CascadeType.ALL)
     @JoinColumn(name = "staff_id", referencedColumnName = "id")
     private Staff staff;
+
+    @OneToMany(mappedBy = "recordedBy")
+    private List<Attendance> attendanceRecords;
 
     public User() {
     }
@@ -88,5 +92,21 @@ public class User extends BaseEntity{
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    public List<Attendance> getAttendanceRecords() {
+        return attendanceRecords;
+    }
+
+    public void setAttendanceRecords(List<Attendance> attendanceRecords) {
+        this.attendanceRecords = attendanceRecords;
     }
 }

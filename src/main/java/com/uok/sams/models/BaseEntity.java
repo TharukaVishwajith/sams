@@ -15,7 +15,7 @@ public class BaseEntity {
     protected Date createdDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updatedDate_date")
+    @Column(name = "updated_date")
     protected Date updatedDate;
 
     public Long getId() {

@@ -8,12 +8,12 @@ public class ApiException {
 
     private final String message;
     private final HttpStatus httpStatus;
-    private final ZonedDateTime timeSramp;
+    private final ZonedDateTime timeStamp;
 
-    public ApiException(String message, HttpStatus httpStatus, ZonedDateTime timeSramp) {
+    public ApiException(String message, HttpStatus httpStatus, ZonedDateTime timeStamp) {
         this.message = message;
         this.httpStatus = httpStatus;
-        this.timeSramp = timeSramp;
+        this.timeStamp = timeStamp;
     }
 
     public String getMessage() {
@@ -24,7 +24,7 @@ public class ApiException {
         return httpStatus;
     }
 
-    public ZonedDateTime getTimeSramp() {
-        return timeSramp;
+    public ZonedDateTime getTimeStamp() {
+        return timeStamp;
     }
 }

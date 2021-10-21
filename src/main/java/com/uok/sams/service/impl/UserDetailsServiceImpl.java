@@ -1,4 +1,4 @@
-package com.uok.sams.service;
+package com.uok.sams.service.impl;
 
 
 import com.uok.sams.models.User;
@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
 	@Autowired
 	UserRepository userRepository;
 

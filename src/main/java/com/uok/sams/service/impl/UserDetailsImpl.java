@@ -1,4 +1,4 @@
-package com.uok.sams.service;
+package com.uok.sams.service.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uok.sams.models.User;

@@ -11,7 +11,7 @@ import com.uok.sams.payload.response.MessageResponse;
 import com.uok.sams.repository.RoleRepository;
 import com.uok.sams.repository.UserRepository;
 import com.uok.sams.security.jwt.JwtUtils;
-import com.uok.sams.service.UserDetailsImpl;
+import com.uok.sams.service.impl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,7 +1,7 @@
 package com.uok.sams.security.jwt;
 
 
-import com.uok.sams.service.UserDetailsImpl;
+import com.uok.sams.service.impl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

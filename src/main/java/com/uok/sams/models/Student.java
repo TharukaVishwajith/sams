@@ -1,8 +1,11 @@
 package com.uok.sams.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "student")
 public class Student extends BaseEntity{
@@ -26,7 +29,7 @@ public class Student extends BaseEntity{
     private District district;
 
     @Column(name = "address")
-    private Province address;
+    private String address;
 
     @Column(name = "postal_code")
     private Integer postalCode;
@@ -53,6 +56,10 @@ public class Student extends BaseEntity{
     @Lob
     @Column(name = "image_data")
     private Blob imageData;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+    private List<Attendance> attendanceList;
 
     public String getStudentNo() {
         return studentNo;
@@ -134,11 +141,11 @@ public class Student extends BaseEntity{
         this.district = district;
     }
 
-    public Province getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Province address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

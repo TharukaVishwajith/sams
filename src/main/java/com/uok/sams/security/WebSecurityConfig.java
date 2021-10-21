@@ -2,7 +2,7 @@ package com.uok.sams.security;
 
 import com.uok.sams.security.jwt.AuthEntryPointJwt;
 import com.uok.sams.security.jwt.AuthTokenFilter;
-import com.uok.sams.service.UserDetailsServiceImpl;
+import com.uok.sams.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
