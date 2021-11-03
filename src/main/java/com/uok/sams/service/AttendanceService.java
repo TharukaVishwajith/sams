@@ -4,5 +4,5 @@ import com.uok.sams.payload.request.AttendanceRequest;
 
 
 public interface AttendanceService {
-    Long addAttendanceRecode(AttendanceRequest attendanceRequest);
+    Integer addAttendanceRecode(AttendanceRequest attendanceRequest);
 }

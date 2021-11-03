@@ -19,12 +19,12 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Transactional
     @Override
-    public Long addAttendanceRecode(AttendanceRequest attendanceRequest) {
+    public Integer addAttendanceRecode(AttendanceRequest attendanceRequest) {
         Attendance attendance = new Attendance();
         Date now = Date.from(Instant.now());
         attendance.setUpdatedDate(now);
         attendance.setCreatedDate(now);
-        attendanceRepository.insertAttendance(
+        return attendanceRepository.insertAttendance(
                 attendanceRequest.getTimeStamp(),
                 attendanceRequest.getLocationId(),
                 attendanceRequest.getQrClientId(),
@@ -32,7 +32,6 @@ public class AttendanceServiceImpl implements AttendanceService {
                 attendanceRequest.getStudentId(),
                 now, now
         );
-        return null;
     }
 
 

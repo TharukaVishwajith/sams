@@ -15,7 +15,7 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
                     "insert into Attendance (time_stamp, location_id, qr_client_id, recorded_by, student_id, created_date, updated_date) " +
                             "values (:timeStamp, :location, :qrClient, :recordedBy, :student,:createdDate, :updatedDate)",
             nativeQuery = true)
-    void insertAttendance(@Param("timeStamp") Date timeStamp, @Param("location") Long location,
+    Integer insertAttendance(@Param("timeStamp") Date timeStamp, @Param("location") Long location,
                     @Param("qrClient") Long qrClient, @Param("recordedBy") Long recordedBy,
                     @Param("student") Long student, @Param("createdDate") Date createdDate,
                     @Param("updatedDate") Date updatedDate);

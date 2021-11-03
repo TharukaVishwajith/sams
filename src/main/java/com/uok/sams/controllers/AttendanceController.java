@@ -23,8 +23,8 @@ public class AttendanceController {
 
 
     @PostMapping("/attendance")
-    public ResponseEntity<Long> makeAttendanceRequest(@RequestBody AttendanceRequest attendanceRequest){
-        return new ResponseEntity<Long>(attendanceService.addAttendanceRecode(attendanceRequest), HttpStatus.ACCEPTED);
+    public ResponseEntity<Integer> makeAttendanceRequest(@RequestBody AttendanceRequest attendanceRequest){
+        return new ResponseEntity<>(attendanceService.addAttendanceRecode(attendanceRequest), HttpStatus.ACCEPTED);
     }
 
 }
