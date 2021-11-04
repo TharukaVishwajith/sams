@@ -3,7 +3,6 @@ package com.uok.sams.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
@@ -20,11 +19,11 @@ public class Student extends BaseEntity{
     @Column(name = "dob")
     private Date dob;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "province")
     private Province province;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "district")
     private District district;
 
@@ -55,7 +54,7 @@ public class Student extends BaseEntity{
     //    TODO: Migrate Blob data to a image repository
     @Lob
     @Column(name = "image_data")
-    private Blob imageData;
+    private byte[] imageData;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
@@ -155,5 +154,29 @@ public class Student extends BaseEntity{
 
     public void setPostalCode(Integer postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
+
+    public List<Attendance> getAttendanceList() {
+        return attendanceList;
+    }
+
+    public void setAttendanceList(List<Attendance> attendanceList) {
+        this.attendanceList = attendanceList;
     }
 }
