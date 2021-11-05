@@ -15,6 +15,12 @@ public class Student extends BaseEntity{
     @Column(unique=true, name = "nic_no")
     private String nicNo;
 
+    @Column(unique=true, name = "first_name")
+    private String firstName;
+
+    @Column(unique=true, name = "last_name")
+    private String lastName;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "dob")
     private Date dob;
@@ -55,6 +61,15 @@ public class Student extends BaseEntity{
     @Lob
     @Column(name = "image_data")
     private byte[] imageData;
+
+    @Column(name = "is_suspended", columnDefinition = "boolean default false")
+    protected Boolean isSuspended;
+
+    @Column(name = "faculty")
+    private String faculty;
+
+    @Column(name = "department")
+    private String department;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
@@ -178,5 +193,45 @@ public class Student extends BaseEntity{
 
     public void setAttendanceList(List<Attendance> attendanceList) {
         this.attendanceList = attendanceList;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Boolean getSuspended() {
+        return isSuspended;
+    }
+
+    public void setSuspended(Boolean suspended) {
+        isSuspended = suspended;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }
