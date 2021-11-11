@@ -1,7 +1,6 @@
 package com.uok.sams.models;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Date;
 
 @Entity(name = "staff")
@@ -42,7 +41,7 @@ public class Staff extends BaseEntity{
     //    TODO: Migrate Blob data to a image repository
     @Lob
     @Column(name = "image_data")
-    private Blob imageData;
+    private byte[] imageData;
 
     public String getName() {
         return name;
@@ -114,5 +113,21 @@ public class Staff extends BaseEntity{
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 }
